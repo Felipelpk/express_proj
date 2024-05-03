@@ -13,7 +13,7 @@ const app = express();
 export const temporaryTemplatesDir = path.join(tempDir, "views");
 const templatesDir = path.join(__dirname, 'views');
 
-function copyFilesToTempDir(sourceDir: any, tempDir: any) {
+function copyFilesToTempDir(sourceDir: string, tempDir: string) {
     // Certifique-se de que o diretório temporário existe
     if (!fs.existsSync(tempDir)) {
       fs.mkdirSync(tempDir, { recursive: true });
