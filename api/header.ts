@@ -1,4 +1,4 @@
-export const header = `<!doctype html>
+const header = `<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -25,3 +25,5 @@ div, p, a, li, td {-webkit-text-size-adjust:none;}
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="table-layout: fixed;" bgcolor="#F6F6F6"><tr><td align="center" valign="top">
 <!--[if mso]><table width="650" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" valign="top"><![endif]-->
 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:650px" bgcolor="#${bgcolor}">`
+
+exports.HTMLbody1 = header;
