@@ -1,10 +1,9 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { footer } from "../footer";
 import nunjucks from "nunjucks";
 import { tempDir } from "../index";
-import { generateHeaderTemplate } from "../header";
+import { generateFooterTemplate, generateHeaderTemplate } from "../helpers/index";
 
 interface RequestBody {
   components: string[];
@@ -17,6 +16,7 @@ export const postGenerateHTML = (req: express.Request<{}, {}, RequestBody>, res:
 
     const pathTemplate = path.join(tempDir, "views", "template.njk");
     const header = generateHeaderTemplate(bgColor);
+    const footer = generateFooterTemplate();
 
     try {
         //Creating initial template using Header
