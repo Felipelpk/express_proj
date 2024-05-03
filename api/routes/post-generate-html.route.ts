@@ -4,6 +4,7 @@ import fs from "fs";
 import { footer } from "../footer";
 import nunjucks from "nunjucks";
 import { tempDir } from "../index";
+import { generateHeaderHTML } from "../header";
 
 interface RequestBody {
   components: string[];
@@ -15,11 +16,11 @@ export const postGenerateHTML = (req: express.Request<{}, {}, RequestBody>, res:
     const bgColor = background ?? "#F6F6F6";
 
     const pathTemplate = path.join(tempDir, "views", "template.njk");
-    const initialHTML = `<!doctype html>\n<html>\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">\n<title>Document</title>\n<style>\nbody{margin:0; padding:0}\nimg{margin:0; padding:0; }\na[href^=tel]{ color:#666666; text-decoration:none;}\na[href^=date]{ color:#666666; text-decoration:none;}\nhr {margin:0 !important}\ndiv, p, a, li, td {-webkit-text-size-adjust:none;}\n.inlineblock>tbody,\n.inlineblock>tbody>tr,\n.inlineblock>tbody>tr>td {display: block; width: 100%}\n@media only screen and (max-width: 600px) {\nimgmobile{max-width: 70%}\n}\n</style>\n</head>\n<body>\n<div style="margin:0; padding:0;" bgcolor="#ffffff">\n<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="table-layout: fixed;" bgcolor="#F6F6F6"><tr><td align="center" valign="top">\n<!--[if mso]><table width="650" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td align="center" valign="top"><![endif]-->\n<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:650px" bgcolor="${bgColor}">`;
+    const header = generateHeaderHTML(bgColor);
 
     try {
         //Creating initial HTML
-        fs.writeFileSync(pathTemplate, initialHTML);
+        fs.writeFileSync(pathTemplate, header);
 
         // Adding Components
         if (components) {
