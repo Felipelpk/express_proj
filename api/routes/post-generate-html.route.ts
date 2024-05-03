@@ -4,7 +4,7 @@ import fs from "fs";
 import { footer } from "../footer";
 import nunjucks from "nunjucks";
 import { tempDir } from "../index";
-import { generateHeaderHTML } from "../header";
+import { generateHeaderTemplate } from "../header";
 
 interface RequestBody {
   components: string[];
@@ -16,13 +16,13 @@ export const postGenerateHTML = (req: express.Request<{}, {}, RequestBody>, res:
     const bgColor = background ?? "#F6F6F6";
 
     const pathTemplate = path.join(tempDir, "views", "template.njk");
-    const header = generateHeaderHTML(bgColor);
+    const header = generateHeaderTemplate(bgColor);
 
     try {
-        //Creating initial HTML
+        //Creating initial template using Header
         fs.writeFileSync(pathTemplate, header);
 
-        // Adding Components
+        // Adding Components if necessary
         if (components) {
             components.forEach(component => {
                 const componentHTML = `\n{% include "./${component}.njk" %}`;
@@ -30,17 +30,21 @@ export const postGenerateHTML = (req: express.Request<{}, {}, RequestBody>, res:
             });
         };
 
-        // Adding Footer;
+        // Adding Footer
         fs.appendFileSync(pathTemplate, footer);
 
+        // Render template
         const generateHTML = nunjucks.render("template.njk");
         const pathOutputHTML = path.join(tempDir, "output.html");
 
+        // Creating output HTML
         fs.writeFileSync(pathOutputHTML, generateHTML);
 
+        // Send to download
         res.download(pathOutputHTML, "template.html", (error) => {
             if (error) console.log("Error =>", error);
 
+            // Delete output HTML
             fs.unlinkSync(pathOutputHTML);
         });
     } catch (error) {
