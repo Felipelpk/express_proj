@@ -5,8 +5,13 @@ import nunjucks from "nunjucks";
 import path from "path";
 import routes from './routes/index';
 
+import os from "os";
+const tempDir = os.tmpdir();
+
 const app = express();
-const templatesDir = path.join(__dirname, "views");
+const templatesDir = path.join(tempDir, "views");
+
+console.log("Templates Dir =>", templatesDir);
 
 app.use(cors());
 app.use(express.text());
