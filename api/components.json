@@ -1,0 +1,73 @@
+{
+  "data": [
+    {
+     "component": "2col-250"
+    },
+    {
+     "component": "3col-160-text"
+    },
+    {
+     "component": "4col-150"
+    },
+    {
+     "component": "csd-banner"
+    },
+    {
+     "component": "csd-conteudo-3col-165"
+    },
+    {
+     "component": "csd-cta"
+    },
+    {
+     "component": "csd-faixa"
+    },
+    {
+     "component": "csd-footer"
+    },
+    {
+     "component": "csd-header"
+    },
+    {
+     "component": "csd-hero"
+    },
+    {
+     "component": "csd-validade"
+    },
+    {
+     "component": "csd-vitrine2"
+    },
+    {
+     "component": "csd-vitrine4-cham-cta-wbg"
+    },
+    {
+     "component": "csd-vitrine4-cta-wbg"
+    },
+    {
+     "component": "csd-vitrine4"
+    },
+    {
+     "component": "csd-vitrine6-cham-cta-wbg"
+    },
+    {
+     "component": "csd-vitrine6-cta-wbg"
+    },
+    {
+     "component": "csd-vitrine6"
+    },
+    {
+     "component": "cta-300"
+    },
+    {
+     "component": "hero-lg"
+    },
+    {
+     "component": "texto-300"
+    },
+    {
+     "component": "texto-400"
+    },
+    {
+     "component": "texto-500"
+    }
+  ]  
+}
